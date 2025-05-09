@@ -1,0 +1,66 @@
+﻿@model nafCine.ViewModels.SeatSelectionViewModel;
+
+@{
+    ViewData["Title"] = "Chọn Ghế";
+}
+
+<h2 class="text-center my-4">Chọn Ghế</h2>
+
+@if (Model.Seats == null || !Model.Seats.Any())
+{
+    <p class="text-danger text-center">Không có ghế nào được tạo trong hệ thống.</p>
+}
+else
+{
+    <form id="seatSelectionForm" asp-controller="Booking" asp-action="Checkout" method="post" class="text-center">
+        <input type="hidden" name="showtimeId" value="@Model.ShowtimeId" />
+        <input type="hidden" id="selectedSeats" name="selectedSeatIds" />
+
+        <div class="seat-layout d-inline-block">
+            @foreach (var row in Model.Seats.GroupBy(s => s.RowNumber))
+            {
+                <div class="seat-row d-flex justify-content-center mb-2">
+                    @foreach (var seat in row.OrderBy(s => s.SeatNumber))
+                    {
+                        var cssClass = seat.IsBooked ? "seat booked" : "seat available";
+                        <button type="button" class="@cssClass mx-1" data-seatid="@seat.SeatId" disabled="@seat.IsBooked">
+                            @seat.RowNumber@seat.SeatNumber
+                        </button>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="legend my-3">
+            <span class="legend-item available"></span> Ghế trống
+            <span class="legend-item selected"></span> Ghế đang chọn
+            <span class="legend-item booked"></span> Đã đặt
+        </div>
+
+        <button type="submit" class="btn btn-success mt-4">Đặt Vé</button>
+    </form>
+}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Lấy tất cả các ghế có lớp 'available'
+        const availableSeats = document.querySelectorAll('.seat.available');
+        availableSeats.forEach(function(seat) {
+            seat.addEventListener('click', function() {
+                // Nếu ghế vừa được nhấn đã có lớp 'selected', bỏ đi; nếu chưa có thì thêm vào
+                seat.classList.toggle('selected');
+
+                // Cập nhật giá trị của input ẩn nếu cần thiết
+                // Ví dụ: cập nhật một danh sách các id ghế đã chọn
+                updateSelectedSeats();
+            });
+        });
+
+        function updateSelectedSeats() {
+            // Lấy các ghế có lớp 'selected'
+            const selectedSeats = document.querySelectorAll('.seat.selected');
+            const selectedIds = Array.from(selectedSeats).map(seat => seat.getAttribute('data-seatid'));
+            document.getElementById('selectedSeats').value = selectedIds.join(',');
+        }
+    });
+</script>

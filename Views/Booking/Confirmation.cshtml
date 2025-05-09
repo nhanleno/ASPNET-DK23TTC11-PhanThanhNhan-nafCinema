@@ -1,0 +1,115 @@
+﻿@model nafCine.Models.Booking
+
+@{
+    ViewData["Title"] = "Xác Nhận Đặt Vé";
+}
+
+<!-- CSS Nội Bộ để tạo kiểu cho phiếu đặt vé -->
+<style>
+    body {
+        background-color: #f7f7f7;
+    }
+
+    .ticket-wrapper {
+        max-width: 800px;
+        margin: 40px auto;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .ticket-header {
+        background: linear-gradient(to right, #343a40, #4e555b);
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+
+        .ticket-header h2 {
+            margin: 0;
+        }
+
+        .ticket-header p {
+            margin: 5px 0 0;
+            font-size: 1.1rem;
+        }
+
+    .ticket-body {
+        padding: 20px;
+    }
+
+    .ticket-section {
+        margin-bottom: 20px;
+    }
+
+        .ticket-section h4,
+        .ticket-section h5 {
+            margin-bottom: 15px;
+        }
+
+        .ticket-section p {
+            margin: 0 0 5px 0;
+        }
+
+    .ticket-footer {
+        padding: 15px;
+        border-top: 1px solid #ddd;
+        text-align: center;
+    }
+
+    .btn-group-custom {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+</style>
+
+<div class="ticket-wrapper">
+    <div class="ticket-header">
+        <h2>Xác Nhận Đặt Vé</h2>
+        <p>Mã vé: <strong>@Model.BookingId</strong></p>
+    </div>
+    <div class="ticket-body">
+        <!-- Thông tin phim và rạp -->
+        <div class="ticket-section">
+            <h4>Thông Tin Phim &amp; Rạp</h4>
+            <p><strong>Tên Phim:</strong> @Model.Showtime.Movie.Title</p>
+            <p><strong>Rạp Chiếu:</strong> @Model.Showtime.Screen.RoomName</p>
+            <p><strong>Địa chỉ:</strong> @Model.Showtime.Screen.Cinema.Address</p>
+            <p><strong>Suất Chiếu:</strong> @Model.Showtime.StartTime.ToString("dd/MM/yyyy HH:mm")</p>
+        </div>
+        <!-- Thông tin đơn đặt vé -->
+        <div class="ticket-section">
+            <h4>Thông Tin Đơn Đặt Vé</h4>
+            <p><strong>Ngày đặt:</strong> @Model.BookingDate.ToString("dd/MM/yyyy HH:mm")</p>
+            <p><strong>Tổng số tiền:</strong> @Model.TotalAmount.ToString("#,##0 VND")</p>
+        </div>
+        <hr />
+        <!-- Danh sách ghế đã đặt -->
+        <div class="ticket-section">
+            <h5>Danh Sách Ghế Đã Đặt</h5>
+            <ul class="list-group">
+                @foreach (var bookedSeat in Model.BookedSeats)
+                {
+                    <li class="list-group-item">
+                        Ghế: Hàng @bookedSeat.Seat?.RowNumber - Số @bookedSeat.Seat?.SeatNumber (@bookedSeat.Seat?.SeatClass)
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="ticket-footer">
+        <div class="btn-group-custom">
+            <button class="btn btn-primary" onclick="window.print()">In Phiếu</button>
+            <button class="btn btn-secondary" onclick="saveTicket()">Lưu Phiếu</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function saveTicket() {
+        // Tạm thời chỉ thông báo. Để triển khai chức năng lưu phiếu, bạn có thể sử dụng jsPDF hoặc html2canvas chuyển đổi nội dung phiếu thành file PDF.
+        alert("Chức năng lưu phiếu đang được phát triển. Vui lòng thử lại sau.");
+    }
+</script>

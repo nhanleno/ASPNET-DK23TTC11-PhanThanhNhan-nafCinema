@@ -1,0 +1,36 @@
+﻿@model nafCine.Models.Cinema
+
+@{
+    ViewData["Title"] = "Thêm Rạp Chiếu Mới";
+}
+
+<h2>Thêm Rạp Chiếu Mới</h2>
+
+<form asp-action="CreateCinema" method="post">
+    <div class="form-group">
+        <label asp-for="CinemaName" class="control-label"></label>
+        <input asp-for="CinemaName" class="form-control" />
+        <span asp-validation-for="CinemaName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address" class="control-label"></label>
+        <input asp-for="Address" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ContactInfo" class="control-label"></label>
+        <input asp-for="ContactInfo" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="MapLocation" class="control-label"></label>
+        <input asp-for="MapLocation" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Thêm Rạp Chiếu" class="btn btn-primary" />
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

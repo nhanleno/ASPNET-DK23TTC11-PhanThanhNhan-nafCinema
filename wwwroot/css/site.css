@@ -1,0 +1,402 @@
+﻿html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+/* ================================
+   nafCine - Custom Styles
+================================ */
+
+/* Các biến chủ đạo cho toàn bộ giao diện */
+:root {
+    --primary-color: #2575fc;
+    --secondary-color: #6a11cb;
+    --accent-color: #1E90FF;
+    --background-color: #f7f7f7;
+    --text-color: #333;
+}
+
+/* Reset các margin, padding và thiết lập box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Thiết lập cơ bản cho body */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* =============== HEADER & NAVIGATION =============== */
+
+/* Header: sử dụng nền màu chính */
+header {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: var(--primary-color) !important;
+    border-bottom: 2px solid var(--secondary-color);
+    padding: 10px 0;
+}
+
+/* Logo/Brand của Navbar */
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff !important;
+}
+
+/* Các mục trong Navbar */
+.navbar-nav .nav-link {
+    color: #fff !important;
+    font-size: 1.1rem;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+    .navbar-nav .nav-link:hover {
+        color: var(--accent-color) !important;
+    }
+
+/* Header các item đăng nhập/đăng ký */
+.navbar-nav.ml-auto .nav-item {
+    margin-left: 15px;
+}
+
+/* =============== MAIN CONTENT =============== */
+
+/* Container chung (đã được Bootstrap định nghĩa, ta có thể ghi đè hoặc bổ sung) */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Thẻ main chứa nội dung trang chính */
+main {
+    padding: 40px 0;
+    min-height: 70vh;
+}
+
+/* =============== FOOTER =============== */
+
+footer {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 50px;
+}
+
+/* =============== BUTTONS =============== */
+
+.btn {
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+    .btn:hover {
+        transform: scale(1.05);
+    }
+
+/* =============== FORMS =============== */
+
+/* Các ô nhập liệu */
+.form-control {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+    .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
+    }
+
+/* =============== UTILITIES & RESPONSIVE =============== */
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+
+        .navbar-nav .nav-item {
+            margin: 5px 0;
+        }
+}
+
+/*Trang Movie detail*/
+body {
+    background-color: #f7f7f7;
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.movie-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.movie-poster {
+    flex: 1 1 300px;
+    background: #f4f4f4;
+    text-align: center;
+    padding: 20px;
+}
+
+    .movie-poster img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: auto;
+        border-radius: 4px;
+    }
+
+.movie-details {
+    flex: 2 1 500px;
+    padding: 20px 30px;
+}
+
+    .movie-details h2 {
+        margin-bottom: 20px;
+        font-size: 2.5rem;
+        color: #222;
+    }
+
+    .movie-details p {
+        margin: 10px 0;
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+        .movie-details p strong {
+            margin-right: 5px;
+            color: #555;
+        }
+
+.btn-booking {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+    .btn-booking:hover {
+        background-color: #218838;
+    }
+
+/*Corousel*/
+.carousel-item img {
+    max-height: 400px; /* Giảm chiều cao của ảnh slide */
+    width: 100%;
+    object-fit: cover; /* Đảm bảo ảnh không bị kéo dài */
+}
+.card-img-top {
+    width: 100%;
+    height: 300px; /* Chiều cao cố định cho ảnh phim */
+    object-fit: cover; /* Đảm bảo ảnh không bị méo */
+}
+
+/*Trang chọn ghế*/
+.seat {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.seat.available {
+    background-color: #28a745;
+}
+
+    .seat.available:hover {
+        transform: scale(1.1);
+    }
+
+.seat.booked {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+.seat.selected {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.legend-item {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+    .legend-item.available {
+        background-color: #28a745;
+    }
+
+    .legend-item.booked {
+        background-color: #6c757d;
+    }
+
+    .legend-item.selected {
+        background-color: #ffc107;
+    }
+
+/*--------*/
+
+/*Đăng nhập, đăng ký*/
+<!-- Trong file Register.cshtml hoặc layout, bạn có thể thêm đoạn này -->
+
+:root {
+    --primary-color: #2575fc;
+    --secondary-color: #6a11cb;
+    --light-gray: #f7f7f7;
+    --text-color: #333;
+}
+
+.registration-wrapper {
+    display: flex;
+    align-content: center;
+    max-width: 900px;
+    margin: 50px auto;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+
+.registration-container {
+    background: #ffffff;
+    width: 400px;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+    .registration-container h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: var(--text-color);
+    }
+
+    .registration-container label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: bold;
+        color: var(--text-color);
+    }
+
+    .registration-container .form-control {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        transition: border-color 0.3s ease;
+    }
+
+        .registration-container .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+    .registration-container .text-danger {
+        font-size: 0.875em;
+        color: #e74c3c;
+        margin-top: -10px;
+        margin-bottom: 10px;
+    }
+
+    .registration-container .btn-primary {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+        .registration-container .btn-primary:hover {
+            background: var(--secondary-color);
+        }
+
+.alert-success {
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background: #d4edda;
+    color: #155724;
+    text-align: center;
+}
+
+logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    min-height: 200px;
+    width: 500px;
+
+}
+
+.logo-text {
+
+    font-size: 60px;
+    font-weight: bold;
+    color: #1E90FF;
+    font-family: 'Roboto', sans-serif;
+    position: absolute;
+    text-align: center;
+
+}
+
+

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<nafCine.Models.Movie>
+
+@{
+    ViewData["Title"] = "Trang chủ";
+    var topMovies = Model.Take(3).ToList(); // Lấy 3 bộ phim đầu tiên
+}
+
+<h2 class="text-center my-4">Phim Hot Nhất</h2>
+
+<!-- Bootstrap Carousel -->
+<div id="movieCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        @for (var i = 0; i < topMovies.Count; i++)
+        {
+            var movie = topMovies[i];
+            <div class="carousel-item @(i == 0 ? "active" : "")">
+                <img src="@movie.PosterImageUrl" class="d-block w-100" alt="@movie.Title">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>@movie.Title</h5>
+                    <p>@movie.Genre</p>
+                    <a href="@Url.Action("Details", "Movies", new { id = movie.MovieId })" class="btn btn-primary">Xem chi tiết</a>
+                </div>
+            </div>
+        }
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#movieCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#movieCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+</div>
+
+<!-- Danh sách phim -->
+<h2 class="text-center my-4">Phim đang chiếu</h2>
+<div class="row">
+    @foreach (var movie in Model)
+    {
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img-top" src="@movie.PosterImageUrl" alt="@movie.Title" />
+                <div class="card-body">
+                    <h5 class="card-title">@movie.Title</h5>
+                    <p class="card-text">@movie.Genre</p>
+                    <a href="@Url.Action("Details", "Movies", new { id = movie.MovieId })" class="btn btn-primary">Chi tiết</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

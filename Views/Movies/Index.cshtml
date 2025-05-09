@@ -1,0 +1,25 @@
+﻿@model IEnumerable<nafCine.Models.Movie>
+
+@{
+    ViewData["Title"] = "Danh sách phim";
+}
+
+<h2>Danh sách phim</h2>
+
+<div class="row">
+    @foreach (var movie in Model)
+    {
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                <img class="card-img-top" src="@movie.PosterImageUrl" alt="@movie.Title" />
+                <div class="card-body">
+                    <h5 class="card-title">@movie.Title</h5>
+                    <p class="card-text">@movie.Genre</p>
+                    <a href="@Url.Action("Details", "Movies", new { id = movie.MovieId })" class="btn btn-primary">
+                        Chi tiết
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,23 @@
+﻿@model nafCine.Models.Movie
+
+@{
+    ViewData["Title"] = "Chi tiết phim";
+}
+
+<div class="movie-container">
+    <div class="movie-poster">
+        <img src="@Model.PosterImageUrl" alt="@Model.Title" />
+    </div>
+    <div class="movie-details">
+        <h2>@Model.Title</h2>
+        <p><strong>Thể loại:</strong> @Model.Genre</p>
+        <p><strong>Đạo diễn:</strong> @Model.Director</p>
+        <p><strong>Diễn viên:</strong> @Model.Actors</p>
+        <p><strong>Thời lượng:</strong> @Model.Duration phút</p>
+        <p><strong>Ngày khởi chiếu:</strong> @Model.ReleaseDate?.ToString("dd/MM/yyyy")</p>
+        <p>@Model.Description</p>
+        <a asp-controller="Booking" asp-action="SelectShowtime" asp-route-movieId="@Model.MovieId" class="btn-booking">
+            Đặt vé
+        </a>
+    </div>
+</div>

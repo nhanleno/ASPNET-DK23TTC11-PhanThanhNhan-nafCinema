@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Trang Quản Trị";
+}
+
+<h2 class="text-center">Quản Lý Rạp Phim</h2>
+
+<!-- Thống Kê -->
+<div class="row">
+    <div class="col-md-3">
+        <div class="card text-bg-primary mb-3">
+            <div class="card-body text-center">
+                <h4>Tổng Số Phim</h4>
+                <h2>@ViewBag.MovieCount</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-bg-success mb-3">
+            <div class="card-body text-center">
+                <h4>Tổng Số Rạp Chiếu</h4>
+                <h1>@ViewBag.CinemaCount</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-bg-warning mb-3">
+            <div class="card-body text-center">
+                <h4>Tổng Số Phòng Chiếu</h4>
+                <h2>@ViewBag.ScreenCount</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-bg-danger mb-3">
+            <div class="card-body text-center">
+                <h4>Tổng Số Suất Chiếu</h4>
+                <h2>@ViewBag.ShowtimeCount</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quản Lý -->
+<div class="list-group mt-4">
+    <a asp-action="CreateMovie" class="list-group-item list-group-item-action">🎬 Thêm Phim Mới</a>
+    <a asp-action="CreateCinema" class="list-group-item list-group-item-action">🏢 Thêm Rạp Chiếu</a>
+    <a asp-action="CreateScreen" class="list-group-item list-group-item-action">📽️ Thêm Phòng Chiếu</a>
+    <a asp-action="CreateShowtime" class="list-group-item list-group-item-action">🕒 Thêm Suất Chiếu</a>
+    <a asp-action="CreateTicketPrice" class="list-group-item list-group-item-action">💰 Thêm Giá Vé</a>
+</div>

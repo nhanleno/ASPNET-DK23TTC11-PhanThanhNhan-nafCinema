@@ -1,0 +1,35 @@
+﻿@model IEnumerable<nafCine.Models.Showtime>
+
+@{
+    ViewData["Title"] = "Chọn Suất Chiếu";
+}
+
+<h2 class="mb-4">Chọn Suất Chiếu</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Ngày chiếu</th>
+            <th>Giờ bắt đầu</th>
+            <th>Giờ kết thúc</th>
+            <th>Phòng chiếu</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var show in Model)
+        {
+            <tr>
+                <td>@show.StartTime.ToString("dd/MM/yyyy")</td>
+                <td>@show.StartTime.ToString("HH:mm")</td>
+                <td>@show.EndTime.ToString("HH:mm")</td>
+                <td>@show.Screen?.RoomName</td>
+                <td>
+                    <a asp-controller="Booking" asp-action="SelectSeats" asp-route-showtimeId="@show.ShowtimeId" class="btn btn-primary">
+                        Chọn Ghế
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
